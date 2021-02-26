@@ -49,7 +49,7 @@ class App extends React.Component {
 
   insertar=()=>{
     var nuevo ={...this.state.form};
-    nuevo.id=this.state.datos.length+1;
+    nuevo.id=this.state.datos[this.state.datos.length-1].id+1;
     var list = this.state.datos;
     console.log(nuevo);
     list.push(nuevo);
@@ -71,7 +71,7 @@ class App extends React.Component {
   }
 
   eliminar=(dato)=>{
-    var preg = window.confirm("Quiere eliminar la categoria "+dato.categoria);
+    var preg = window.confirm("Quiere eliminar la categoría "+dato.categoria);
     if(preg){
       var num=0;
       var list = this.state.datos;
@@ -91,7 +91,7 @@ class App extends React.Component {
       <header className="App-header">
        
       </header>
-      <h1>Categorias</h1>
+      <h1>Categorías</h1>
       <body>
         <Container>
           <br />

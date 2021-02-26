@@ -34,7 +34,7 @@ img{
     position: relative;
     bottom: 25px;
     left: 760px;
-    background-color: green;
+    background-color: #00FF7F;
 }
 
 #delete{
@@ -43,5 +43,5 @@ img{
 }
 #edit{
     margin-right: 10px;
-    background-color: orange;
+    background-color: #32CD32;
 }
