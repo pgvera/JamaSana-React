@@ -1,0 +1,47 @@
+img{
+    width: 70%;
+    margin: 0 auto; 
+}
+
+
+.tdim{
+    width:15%;
+}
+
+#tabla .tdid{
+    width: 8%;
+    vertical-align: middle;
+}
+
+#tabla .tdcat{
+    width: 20%;
+    vertical-align: middle;
+}
+
+
+#tabla .buttons{
+    vertical-align: middle;
+    width: 20%;
+}
+
+#divcat{
+    text-align: center;
+    position:relative;
+    top: 20px;
+}
+
+#add{
+    position: relative;
+    bottom: 25px;
+    left: 760px;
+    background-color: #00FF7F;
+}
+
+#delete{
+    margin-left: 10px;
+    background-color: red;
+}
+#edit{
+    margin-right: 10px;
+    background-color: #32CD32;
+}

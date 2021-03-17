@@ -1,0 +1,45 @@
+#fondo{
+    background-image: url(../../imagenes/fondo.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    width: 30%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+#contenedor{
+    width: 60%;
+    height: 50%;
+    align-content: center;
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    /* align-content: center; */
+    font-size: x-large;
+    margin: auto;
+}
+
+#bloque1{
+    text-align: center;
+}
+.texto{
+    padding-top: 2%;
+    margin: auto;
+    padding: 3%;
+    text-align: center;
+}
