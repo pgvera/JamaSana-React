@@ -36,12 +36,15 @@ class Login extends Component {
             }).then(
                 data => {
                     console.log(data);
+                    alert(
+                        "sesion iniciada"
+                    );
                 }
             ).catch(
                 error => {
                     console.log(error);
                     alert(
-                        "Credenciales incorrectas"
+                        "Hubo algún error"
                     );
                 })
 
