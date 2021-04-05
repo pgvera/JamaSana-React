@@ -1,82 +1,169 @@
 import React, { Component } from 'react'
+import Cookies from 'universal-cookie';
+import { Redirect } from 'react-router';
+
+// Componentes
+//  import Categorias from './componentes/Categoria/Categorias';
+import LoginHeader from './login_header.js';
+
 
 //css
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Table, Button, Container, Modal, FormGroup, ModalFooter, ModalBody, ModalHeader } from 'reactstrap';
+
 
 //imagenes
 import logo from "../../imagenes/logo.png"
 
 //servicios
 
+const cookies = new Cookies();
 
 class Login extends Component {
     state = {
         credentials: {
             username: "",
             password: ""
+        },
+        error: false,
+        error_msg: "",
+        logged: false,
+
+    }
+
+    componentDidMount() {
+
+        // if (cookies.get("token")) {
+        //     window.location.href = "./reportes";
+        // }
+
+        if (!cookies.get("token")) {
+            return;
+        } else {
+            this.setState({ logged: true });
         }
 
     }
+
+    onSubmit = e => {
+        e.preventDefault();
+    }
+
+    onChange = async e => {
+
+        this.setState({
+            error: false,
+            credentials: {
+                ...this.state.credentials,
+                [e.target.name]: e.target.value
+            }
+        });
+
+    }
+
+
+
+
     login = event => {
-        if (this.state.credentials.username === "" || this.state.credentials.password==="") {
-            alert(
-                "Debe llenar todos los campos"
-            );
-            
 
-        }
-        else {
-            console.log(this.state.credentials);
-            fetch('http://127.0.0.1:8000/usuarios/login_admin', {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(this.state.credentials)
-            }).then(
-                data => {
-                    console.log(data);
-                    alert(
-                        "sesion iniciada"
-                    );
+
+
+
+        let url = global.host + "usuarios/login_admin";
+        const requestOptions = {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(this.state.credentials),
+        };
+
+
+
+        // fetch(url, {
+        //     method: "POST",
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(this.state.credentials)
+        // }).then(
+        //     data => {
+        //         console.log(data);
+        //         // ReactDOM.render(
+        //         //     <Redirect to='/Categoria'/>
+        //         // );
+
+        //         alert(
+        //             "sesion iniciada"
+        //         );
+        //     }
+
+
+
+
+        // ).catch(
+        //     error => {
+        //         console.log(error);
+        //         alert(
+        //             "Hubo algún error"
+        //         );
+        //     })
+
+        fetch(url, requestOptions)
+            .then(async response => {
+
+                const data = await response.json();
+                if (response.status === 200) {
+                    cookies.set("token", data["Auth-token"], { path: "/" });
+                    // window.location.href = "./reportes";
+                    this.setState({ logged: true });
+                    window.location.href = "./reportes";
+                    // return (<Redirect to="/reportes" />);
+                } else {
+                    this.setState({
+                        error: true,
+                        error_msg: "Usuario o contraseña inválidos"
+                    });
                 }
-            ).catch(
-                error => {
-                    console.log(error);
-                    alert(
-                        "Hubo algún error"
-                    );
-                })
+            })
+            .catch(err => {
+                this.setState({
+                    error: true,
+                    error_msg: "Error al conectar con el servidor"
+                });
+            });
 
-        }
+
 
     }
 
-    inputChanged = event => {
-        const cred = this.state.credentials;
-        cred[event.target.name] = event.target.value;
-        this.setState({ credentials: cred });
-    }
+
 
     render() {
-        return <div id="fondo" >
-            <div id="contenedor">
-                <div className="texto">
-                    <p>Bienvenido a LaJamaSama</p>
-                    <img id="logo" src={logo} alt="Logo" />
-                </div>
 
-                
-                <form>
+
+
+        // if (this.state.logged) {
+        //     return (<Redirect to="/reportes" />);
+        // } else {
+
+
+        return (
+            <div className="contenido-centrado fondo" >
+                <LoginHeader />
+
+                <div  id="contenedor" style={{ paddingTop: this.state.error ? "0px" : "30px" }}>
+                {
+                        this.state.error === true && <div className="contenedor-error" ><span>{this.state.error_msg}</span></div>
+                    }
+                    
+                    <form onSubmit={this.onSubmit} >
                     <div id="bloque1">
+                    
                         <div className="row texto">
                             <div className="col-sm">
-                                <p>Usuario:</p>
+                                <p >Usuario:</p>
                             </div>
                             <div className="col-sm">
-                                <input type="text" className="form-control" id="username" name="username" placeholder="Usuario"
+                                <input type="text" className="form-control" id="username" name="username" 
                                     value={this.state.credentials.username}
-                                    onChange={this.inputChanged}>
+                                    onChange={this.onChange}>
                                 </input>
                             </div>
                         </div>
@@ -86,9 +173,21 @@ class Login extends Component {
                                 <p>Contraseña:</p>
                             </div>
                             <div className="col-sm">
-                                <input type="password" className="form-control" id="password" name="password" placeholder="Contraseña"
+                                <input type="password" className="form-control" id="password" name="password" 
                                     value={this.state.credentials.password}
-                                    onChange={this.inputChanged}>
+                                    onChange={this.onChange}>
+                                </input>
+                            </div>
+                        </div>
+
+                        <div className="row texto">
+                            <div className="col-sm">
+                                <p>Tipo:</p>
+                            </div>
+                            <div className="col-sm">
+                                <input type="text" className="form-control"  name="tipo" 
+                                    value="Administrador" disabled={true}
+                                    >
                                 </input>
                             </div>
                         </div>
@@ -96,21 +195,18 @@ class Login extends Component {
                             <div className="col-sm">
                                 <input type="submit"
                                     className="btn btn-success"
-                                    value="Entrar"
+                                    value="Ingresar"
                                     onClick={this.login}></input>
                             </div>
                         </div>
                     </div>
 
                 </form>
-
-
-
+                </div>
             </div>
-
-
-        </div>
+        );
     }
+    // }
 }
 
 

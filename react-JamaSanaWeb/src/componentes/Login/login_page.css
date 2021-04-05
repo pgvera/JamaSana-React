@@ -1,0 +1,104 @@
+/* Centrado del contenido */
+.contenido-centrado{
+
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.fondo {
+    background-image: url(../../imagenes/fondo.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;    
+}
+
+.contenido-header{
+    margin: auto;
+}
+
+.contenido-form {
+    width: 30%;
+}
+
+/* Titulos */
+.title-style{
+    height: 80px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    color: black;
+}
+
+/* Inputs */
+.input-style{
+    border: 2px solid #77D353;
+    height: 40px;
+    font-size: 17px;
+    font-style: italic;
+    color: gray;
+    outline: none;
+    text-align: center;
+    margin: 15px 0px;
+}
+
+.input-style:focus{
+    border: 2px solid #77D353;
+}
+
+input[type=submit] {
+    width: 50%;
+    height: 40px;
+    margin-left: 25%;
+    background-color: #77D353;
+    border: 2px solid #77D353;
+    color: white;
+    font-size: 17px;
+    font-style: italic;
+    border-radius: 30px;
+}
+
+/* Label */
+
+.label-style{
+    font-size: 17px;
+    color: gray;
+    font-weight: bold;
+    font-style: italic;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+} 
+
+/* Logo */
+img{
+    width: 30%;
+    height: 30%;
+}
+
+/* Div del form */
+.row-form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+/* Error */
+.contenedor-error{
+    background-color: #e4605e ;
+    color: white;
+    width: 30%;
+    height: 30px;
+    font-size: 13px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    padding: 5px;
+}

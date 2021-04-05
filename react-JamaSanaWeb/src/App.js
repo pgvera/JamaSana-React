@@ -1,22 +1,26 @@
-import './App.css';
 import React from 'react';
+import {  BrowserRouter as Router,  Switch,  Route,  Link} from 'react-router-dom';
+
+//css
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import {Table, Button, Container, Modal, FormGroup, ModalFooter, ModalBody, ModalHeader} from 'reactstrap';
 
 // Componentes
 import Categorias from './componentes/Categoria/Categorias';
 import Login from './componentes/Login/Login';
+import Principal from './componentes/Principal/Principal';
 
 
-
-class App extends React.Component {
-  render() {
-    return <div >
-      <Login></Login>
-      {/* <Categorias></Categorias> */}
-    </div>
-  }
-
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" render={props => (<Login {...props} />)} />
+        <Route exact path="/reportes" render={props => (<Principal {...props} />)} />
+        <Route exact path="/categorias" render={props => (<Categorias {...props} />)} />
+      </Switch>
+    </Router>
+  );
 }
 
 

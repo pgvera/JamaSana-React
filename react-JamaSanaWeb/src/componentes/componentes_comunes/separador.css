@@ -1,0 +1,23 @@
+/* Separador */
+.separador{
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5% 10% 85%;
+    text-align: center;
+    align-items: center;
+
+}
+
+.separador > s {
+    height: 2px;
+    background: #77D353;
+    display: inline-block;
+}
+
+.fuente-color {
+
+    font-size: 25px;
+    color: #77D353;
+
+}

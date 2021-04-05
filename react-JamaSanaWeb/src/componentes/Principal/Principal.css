@@ -1,0 +1,24 @@
+/* Estilos para las graficas */
+.centrado-graficos {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+.contenedor-graficos {
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+}
+
+
+.graficos {
+
+    padding: 30px;
+    height: 500px;
+
+}
