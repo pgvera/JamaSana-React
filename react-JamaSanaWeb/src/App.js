@@ -6,9 +6,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Componentes
-import Categorias from './componentes/Categoria/Categorias';
+import CategoriaHome from './componentes/Categoria/CategoriaHome';
 import Login from './componentes/Login/Login';
-import Principal from './componentes/Principal/Principal';
+import Dashboard from './componentes/Dashboard/dashboard';
+import CategoriaAdd from './componentes/Categoria/CategoriaAdd';
+import CategoriaEdit from './componentes/Categoria/CategoriaEdit';
 
 
 function App() {
@@ -16,8 +18,10 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" render={props => (<Login {...props} />)} />
-        <Route exact path="/reportes" render={props => (<Principal {...props} />)} />
-        <Route exact path="/categorias" render={props => (<Categorias {...props} />)} />
+        <Route exact path="/reportes" render={props => (<Dashboard {...props} />)} />
+        <Route exact path="/categorias" render={props => (<CategoriaHome {...props} />)} />
+        <Route exact path="/categoria/add" render={props => (<CategoriaAdd {...props} />)} />
+        <Route exact path="/categoria/edit/:id" render={props => (<CategoriaEdit {...props} />)} />
       </Switch>
     </Router>
   );

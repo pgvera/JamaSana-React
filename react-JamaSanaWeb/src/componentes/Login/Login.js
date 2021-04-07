@@ -3,7 +3,6 @@ import Cookies from 'universal-cookie';
 import { Redirect } from 'react-router';
 
 // Componentes
-//  import Categorias from './componentes/Categoria/Categorias';
 import LoginHeader from './login_header.js';
 
 
@@ -33,10 +32,6 @@ class Login extends Component {
 
     componentDidMount() {
 
-        // if (cookies.get("token")) {
-        //     window.location.href = "./reportes";
-        // }
-
         if (!cookies.get("token")) {
             return;
         } else {
@@ -61,15 +56,8 @@ class Login extends Component {
 
     }
 
-
-
-
     login = event => {
-
-
-
-
-        let url = global.host + "usuarios/login_admin";
+        // let url = global.host + "usuarios/login_admin";
         const requestOptions = {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
@@ -77,35 +65,7 @@ class Login extends Component {
         };
 
 
-
-        // fetch(url, {
-        //     method: "POST",
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(this.state.credentials)
-        // }).then(
-        //     data => {
-        //         console.log(data);
-        //         // ReactDOM.render(
-        //         //     <Redirect to='/Categoria'/>
-        //         // );
-
-        //         alert(
-        //             "sesion iniciada"
-        //         );
-        //     }
-
-
-
-
-        // ).catch(
-        //     error => {
-        //         console.log(error);
-        //         alert(
-        //             "Hubo algún error"
-        //         );
-        //     })
-
-        fetch(url, requestOptions)
+        fetch(global.url_login, requestOptions)
             .then(async response => {
 
                 const data = await response.json();

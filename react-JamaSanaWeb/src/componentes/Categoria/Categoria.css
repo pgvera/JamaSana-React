@@ -1,10 +1,40 @@
-img{
-    width: 70%;
-    margin: 0 auto; 
+.img_cat{
+    width: 5rem;
+    margin: 0 auto;
+    height: 5rem; 
 }
 
+.table_cat{
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 5%;
+}
 
-.tdim{
+#edit{
+    fill: #fff;
+    background-color: #19CC95;
+    border-radius: 85%;
+    width: 2.1rem;
+    height: 2rem;
+    padding: 0.3rem;
+  }
+  
+  #delete{
+    background-color: #fff;
+    fill: #D7576A;
+    border-radius: 85%;
+    width: 2.1rem;
+    height: 2rem;
+  
+  }
+
+  .links-comida{
+    margin: auto 5%;
+    
+  }
+
+/* no es mio */
+/* .tdim{
     width:15%;
 }
 
@@ -44,4 +74,4 @@ img{
 #edit{
     margin-right: 10px;
     background-color: #32CD32;
-}
+} */

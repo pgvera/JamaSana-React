@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './Constantes.js'
+// import './Constantes.js'
+import './recursos/constantes/http-url'
 ReactDOM.render(
   <React.StrictMode>
     <App />

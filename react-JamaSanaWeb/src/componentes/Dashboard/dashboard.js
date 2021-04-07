@@ -7,7 +7,7 @@ import { Bar } from 'react-chartjs-2';
 import { Redirect } from 'react-router';
 
 //css
-import './Principal.css';
+import './dashboard.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Table, Button, Container, Modal, FormGroup, ModalFooter, ModalBody, ModalHeader } from 'reactstrap';
 
@@ -17,7 +17,7 @@ import logo from "../../imagenes/logo.png"
 
 const cookies = new Cookies();
 
-class Principal extends Component {
+class Dashboard extends Component {
 
     state = {
 
@@ -80,4 +80,4 @@ class Principal extends Component {
 
 }
 
-export default Principal;
+export default Dashboard;

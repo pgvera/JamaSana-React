@@ -29,6 +29,7 @@ class NavBar extends Component {
                <li className="li-style"> <div className="name-app center-color"> La JamaSana </div> </li>
                <li className={this.state.ruta === "/reportes" ? "li-style active" : "li-style"} > <Link to="/reportes"> Reportes </Link> </li>
                <li className={this.state.ruta === "/categorias" ? "li-style active" : "li-style"} > <Link to="/categorias"> Categorías </Link> </li>
+               {/* <li className={this.state.ruta === "/vendedores" ? "li-style active" : "li-style"} > <Link to="/vendedores"> Vendedores </Link> </li> */}
                {/* <li className={this.state.ruta === "/pedidos" ? "li-style active" : "li-style"} > <Link to="/pedidos"> Pedidos </Link> </li> */}
                {/* <li className={this.state.ruta === "/comidas" ? "li-style active" : "li-style"} > <Link to="/comidas"> Comidas </Link> </li> */}
                <li className="li-style" style={{ float: 'right' }} > <button className="logout-btn center-color" onClick={this.onClick} > Cerrar sesión </button> </li>
