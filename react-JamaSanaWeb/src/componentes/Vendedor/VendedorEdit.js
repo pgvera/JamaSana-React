@@ -25,7 +25,7 @@ const VendedorEdit = (props) => {
     email: "",
   });
 
-  //   const { username, first_name, last_name, email } = vendedor;
+    const { username, first_name, last_name, email } = vendedor;
 
   useEffect(() => {
     loadVendedor();
@@ -34,6 +34,13 @@ const VendedorEdit = (props) => {
   const onInputChange = (e) => {
     setVendedor({ ...vendedor, [e.target.name]: e.target.value });
   };
+
+  const handleChange=event=>{
+    const target = event.target;
+    const name = target.name;
+    const value = name.value;
+    setVendedor({...vendedor,[name]:value})
+} 
 
   const loadVendedor = async () => {
     let token = cookies.get("token");
@@ -104,6 +111,7 @@ const VendedorEdit = (props) => {
                       required
                       className="form-control"
                       name="username"
+                      value={username}
                       type="text"
                       onChange={(e) => onInputChange(e)}
                     />
@@ -117,6 +125,7 @@ const VendedorEdit = (props) => {
                       className="form-control"
                       name="email"
                       type="text"
+                      value={email}
                       onChange={(e) => onInputChange(e)}
                     />
                   </FormGroup>
@@ -131,6 +140,7 @@ const VendedorEdit = (props) => {
                       className="form-control"
                       name="first_name"
                       type="text"
+                      value={first_name}
                       onChange={(e) => onInputChange(e)}
                     />
                   </FormGroup>
@@ -143,25 +153,13 @@ const VendedorEdit = (props) => {
                       className="form-control"
                       name="last_name"
                       type="text"
+                      value={last_name}
                       onChange={(e) => onInputChange(e)}
                     />
                   </FormGroup>
                 </Col>
               </Row>
-              <Row>
-                <Col className="py-1" xs="6" xl="7">
-                  <FormGroup className="groupf mb-3">
-                    <label>Password:</label>
-                    <input
-                      required
-                      className="form-control"
-                      name="password"
-                      type="password"
-                      onChange={(e) => onInputChange(e)}
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
+              
               <footer id="addfoot">
                 <button
                   type="submit"
