@@ -7,7 +7,7 @@ import Cookies from 'universal-cookie';
 // librerias de la tabla
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
-import paginationFactory, { PaginationProvider, PaginationListStandalone } from 'react-bootstrap-table2-paginator';
+import paginationFactory  from 'react-bootstrap-table2-paginator';
 
 
 //css
@@ -72,7 +72,7 @@ const CategoriaHome = (props) => {
   // funciones de la tabla
   function rankFormatter(cell, row, rowIndex, formatExtraData) {
     return (
-      <img src={global.url_static + cell} className="img_cat" />
+      <img src={global.url_static + cell} className="img_cat" alt="" />
     );
   }
 

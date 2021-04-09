@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Table, Button, Container, Modal, FormGroup, ModalFooter, ModalBody, ModalHeader } from 'reactstrap';
 
 //imagenes
-import logo from "../../imagenes/logo.png"
+// import logo from "../../imagenes/logo.png"
 
 
 const cookies = new Cookies();
@@ -59,7 +59,7 @@ class Dashboard extends Component {
         if (!this.state.logged) {
             return (<Redirect to="/" />);
         } else {
-
+            console.log(cookies.get("token"));
             return (
                 <div>
                     <Navbar {...this.props} />

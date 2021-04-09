@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Cookies from 'universal-cookie';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 
 // Componentes
 import LoginHeader from './login_header.js';
@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 //imagenes
-import logo from "../../imagenes/logo.png"
+// import logo from "../../imagenes/logo.png"
 
 //servicios
 
@@ -71,6 +71,7 @@ class Login extends Component {
                 const data = await response.json();
                 if (response.status === 200) {
                     cookies.set("token", data["Auth-token"], { path: "/" });
+                    
                     // window.location.href = "./reportes";
                     this.setState({ logged: true });
                     window.location.href = "./reportes";

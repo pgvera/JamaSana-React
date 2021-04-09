@@ -124,7 +124,6 @@ const CategoriaAdd = (props) => {
                                             onChange={e => onInputChange(e)}
                                         />
                                     </FormGroup>
-
                                     <FormGroup class="groupf mb-3">
                                         <div class="mt-3">
                                             <label>
@@ -137,13 +136,10 @@ const CategoriaAdd = (props) => {
                                                 onChange={e => selectFile(e)}
                                             />
                                         </div>
-
                                     </FormGroup>
                                     <div id="img-add">
-                                        <img id="addimg" src={imageUrl} />
+                                        <img id="addimg" src={imageUrl} alt="" />
                                     </div>
-                              
-                                   
                                 </Col>
                             </Row>
                             <footer id="addfoot">
