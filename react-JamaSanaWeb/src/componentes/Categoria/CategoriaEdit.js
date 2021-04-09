@@ -110,7 +110,7 @@ const CategoriaEdit = (props) => {
                 <Col className="py-1" xs xl="7">
                   <FormGroup class="groupf mb-3">
                     <label>Nombre:</label>
-                    <input
+                    <input required
                       id="inpnom"
                       required
                       className="form-control"
@@ -131,7 +131,7 @@ const CategoriaEdit = (props) => {
                   <FormGroup class="groupf mb-3">
                     <div class="mt-3">
                       <label>Link-img:</label>
-                      <input
+                      <input required
                         name="imagen"
                         type="file"
                         accept="image/*"
