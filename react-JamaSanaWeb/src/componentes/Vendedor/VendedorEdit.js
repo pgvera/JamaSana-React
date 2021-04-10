@@ -19,13 +19,14 @@ const VendedorEdit = (props) => {
   let history = useHistory();
   const { id } = useParams();
   const [vendedor, setVendedor] = useState({
+    id_user: "",
     username: "",
     first_name: "",
     last_name: "",
     email: "",
   });
 
-    const { username, first_name, last_name, email } = vendedor;
+  const { username, first_name, last_name, email } = vendedor;
 
   useEffect(() => {
     loadVendedor();
@@ -34,13 +35,6 @@ const VendedorEdit = (props) => {
   const onInputChange = (e) => {
     setVendedor({ ...vendedor, [e.target.name]: e.target.value });
   };
-
-  const handleChange=event=>{
-    const target = event.target;
-    const name = target.name;
-    const value = name.value;
-    setVendedor({...vendedor,[name]:value})
-} 
 
   const loadVendedor = async () => {
     let token = cookies.get("token");
@@ -58,29 +52,24 @@ const VendedorEdit = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     let token = cookies.get("token");
-
     const options = {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `Token ${token}`,
       },
     };
-
     let data = {
+      id_user: vendedor.id_user,
       username: vendedor.username,
       first_name: vendedor.first_name,
       last_name: vendedor.last_name,
       email: vendedor.email,
     };
-
     const formData = new FormData();
-
     for (let key in data) {
       formData.append(key, data[key]);
     }
-
     await axios
       .put(global.url_vendedor + id, formData, options)
       .then((res) => {
@@ -159,23 +148,18 @@ const VendedorEdit = (props) => {
                   </FormGroup>
                 </Col>
               </Row>
-              
+
               <footer id="addfoot">
-                <button
-                  type="submit"
-                  className="btn btn-success addbuts"
-                  to="/vendedor/add"
-                >
-                  Agregar
-                </button>
-                <button
-                  onClick={() => history.goBack()}
-                  className="btn btn-danger addbuts"
-                >
-                  Cancelar
-                </button>
+                <button className="btn btn-success addbuts">Actualizar</button>
               </footer>
             </form>
+            <button
+              onClick={() => history.goBack()}
+              // to="/vendedores"
+              className="btn btn-danger addbuts"
+            >
+              Cancelar
+            </button>
           </Container>
         </Container>
       </div>

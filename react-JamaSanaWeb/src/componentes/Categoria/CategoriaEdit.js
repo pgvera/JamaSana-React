@@ -46,19 +46,13 @@ const CategoriaEdit = (props) => {
         Authorization: `Token ${token}`,
       },
     };
-    // console.log(global.url_categoria + id);
+
     const result = await axios.get(global.url_categoria + id, options);
-    // console.log(result);
     setCategoria(result.data);
-  }; // eslint-disable-line react-hooks/exhaustive-deps
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // await axios.put(`http://localhost:3003/comidas/${id}`, comida);
-    // console.log(global.url_categoria + id);
-    // await axios.put(global.url_categoria + id, categoria);
-    // history.push("/categorias");
-
     let token = cookies.get("token");
 
     const options = {
@@ -110,9 +104,9 @@ const CategoriaEdit = (props) => {
                 <Col className="py-1" xs xl="7">
                   <FormGroup class="groupf mb-3">
                     <label>Nombre:</label>
-                    <input required
-                      id="inpnom"
+                    <input
                       required
+                      id="inpnom"
                       className="form-control"
                       name="nombre"
                       type="text"
@@ -131,7 +125,8 @@ const CategoriaEdit = (props) => {
                   <FormGroup class="groupf mb-3">
                     <div class="mt-3">
                       <label>Link-img:</label>
-                      <input required
+                      <input
+                        required
                         name="imagen"
                         type="file"
                         accept="image/*"
@@ -146,7 +141,7 @@ const CategoriaEdit = (props) => {
                 </Col>
               </Row>
               <footer id="addfoot">
-                <button className="btn btn-success addbuts">Guardar</button>
+                <button className="btn btn-success addbuts">Actualizar</button>
                 <button
                   onClick={() => history.goBack()}
                   class="btn btn-danger addbuts"

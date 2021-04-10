@@ -174,7 +174,7 @@ const VendedorHome = (props) => {
 
   const defaultSorted = [
     {
-      dataField: "name",
+      dataField: "username",
       order: "desc",
     },
   ];
