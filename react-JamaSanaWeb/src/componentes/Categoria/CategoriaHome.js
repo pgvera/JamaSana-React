@@ -19,6 +19,9 @@ import NavBar from "../componentes_comunes/navbar";
 import LabelVendedor from "../componentes_comunes/label_administrador";
 import Separador from "../componentes_comunes/separador";
 
+//constantes
+import * as Url from "../../recursos/constantes/http-url";
+
 const cookies = new Cookies();
 
 const CategoriaHome = (props) => {
@@ -40,7 +43,7 @@ const CategoriaHome = (props) => {
 
   // cargar todas las categorias
   const loadCategorias = async () => {
-    const result = await axios.get(global.url_categorias);
+    const result = await axios.get(Url.url_categorias);
     setCategoria(result.data.reverse());
   };
 
@@ -54,9 +57,9 @@ const CategoriaHome = (props) => {
     };
 
     await axios
-      .delete(global.url_categoria + id, options)
+      .delete(Url.url_categoria + id, options)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -68,11 +71,11 @@ const CategoriaHome = (props) => {
 
   // funciones de la tabla
   function rankFormatter(cell, row, rowIndex, formatExtraData) {
-    return <img src={global.url_static + cell} className="img_cat" alt="" />;
+    return <img src={Url.url_static + cell} className="img_cat" alt="" />;
   }
 
   function format(cell, row) {
-    console.log(cell);
+    // console.log(cell);
     return (
       <div>
         <span>
@@ -81,12 +84,12 @@ const CategoriaHome = (props) => {
           </Link>
         </span>
         <span>
-          <Link className="links-comida" onClick={() => deleteCategoria(cell)}>
+          <label className="links-comida" onClick={() => deleteCategoria(cell)}>
             <Icon.DashCircleFill
               id="delete"
               className="iconos"
             ></Icon.DashCircleFill>
-          </Link>
+          </label>
         </span>
       </div>
     );
@@ -192,9 +195,6 @@ const CategoriaHome = (props) => {
             {(props) => (
               <div>
                 <div className="row">
-                  {/* <div className="col-sm">
-                    <h3>Buscar:</h3>
-                    </div> */}
                   <div className="col-sm">
                     <SearchBar {...props.searchProps} />
                     <ClearSearchButton {...props.searchProps} />
@@ -212,7 +212,6 @@ const CategoriaHome = (props) => {
 
                 <br></br>
                 <br></br>
-                {/* <BootstrapTable keyField='id' data={categorias} columns={columns}  bordered={false} /> */}
                 <MyExportCSV {...props.csvProps} />
                 <BootstrapTable
                   bootstrap4

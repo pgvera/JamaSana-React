@@ -14,6 +14,9 @@ import NavBar from "../componentes_comunes/navbar";
 import LabelVendedor from "../componentes_comunes/label_administrador";
 import Separador from "../componentes_comunes/separador";
 
+//constantes
+import * as Url from "../../recursos/constantes/http-url";
+
 const cookies = new Cookies();
 
 const VendedorAdd = (props) => {
@@ -58,7 +61,7 @@ const VendedorAdd = (props) => {
     }
 
     await axios
-      .post(global.url_registrar_vendedor, formData, options)
+      .post(Url.url_registrar_vendedor, formData, options)
       .then((res) => {
         console.log(res);
         history.push("/vendedores");
@@ -145,22 +148,22 @@ const VendedorAdd = (props) => {
                   </FormGroup>
                 </Col>
               </Row>
-              <footer id="addfoot">
-                <button
-                  type="submit"
-                  className="btn btn-success addbuts"
-                  to="/vendedor/add"
-                >
-                  Agregar
-                </button>
-                <button
-                  onClick={() => history.goBack()}
-                  className="btn btn-danger addbuts"
-                >
-                  Cancelar
-                </button>
-              </footer>
+              <button
+                type="submit"
+                className="btn btn-success addbuts"
+                to="/vendedor/add"
+              >
+                Agregar
+              </button>
             </form>
+            <footer id="addfoot">
+              <button
+                onClick={() => history.goBack()}
+                className="btn btn-danger addbuts"
+              >
+                Cancelar
+              </button>
+            </footer>
           </Container>
         </Container>
       </div>

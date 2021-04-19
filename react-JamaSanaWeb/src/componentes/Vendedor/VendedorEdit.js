@@ -14,6 +14,9 @@ import NavBar from "../componentes_comunes/navbar";
 import LabelVendedor from "../componentes_comunes/label_administrador";
 import Separador from "../componentes_comunes/separador";
 
+//constantes
+import * as Url from "../../recursos/constantes/http-url";
+
 const cookies = new Cookies();
 const VendedorEdit = (props) => {
   let history = useHistory();
@@ -45,7 +48,7 @@ const VendedorEdit = (props) => {
       },
     };
 
-    const result = await axios.get(global.url_vendedor + id, options);
+    const result = await axios.get(Url.url_vendedor + id, options);
 
     setVendedor(result.data);
   };
@@ -71,9 +74,9 @@ const VendedorEdit = (props) => {
       formData.append(key, data[key]);
     }
     await axios
-      .put(global.url_vendedor + id, formData, options)
+      .put(Url.url_vendedor + id, formData, options)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         history.push("/vendedores");
       })
       .catch((error) => {
@@ -148,18 +151,16 @@ const VendedorEdit = (props) => {
                   </FormGroup>
                 </Col>
               </Row>
-
-              <footer id="addfoot">
-                <button className="btn btn-success addbuts">Actualizar</button>
-              </footer>
+              <button className="btn btn-success addbuts">Actualizar</button>
             </form>
-            <button
-              onClick={() => history.goBack()}
-              // to="/vendedores"
-              className="btn btn-danger addbuts"
-            >
-              Cancelar
-            </button>
+            <footer id="addfoot">
+              <button
+                onClick={() => history.goBack()}
+                className="btn btn-danger addbuts"
+              >
+                Cancelar
+              </button>
+            </footer>
           </Container>
         </Container>
       </div>

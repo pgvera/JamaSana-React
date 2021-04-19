@@ -14,6 +14,9 @@ import NavBar from "../componentes_comunes/navbar";
 import LabelVendedor from "../componentes_comunes/label_administrador";
 import Separador from "../componentes_comunes/separador";
 
+//constantes
+import * as Url from "../../recursos/constantes/http-url";
+
 const cookies = new Cookies();
 const CategoriaEdit = (props) => {
   let history = useHistory();
@@ -47,7 +50,7 @@ const CategoriaEdit = (props) => {
       },
     };
 
-    const result = await axios.get(global.url_categoria + id, options);
+    const result = await axios.get(Url.url_categoria + id, options);
     setCategoria(result.data);
   };
 
@@ -74,9 +77,9 @@ const CategoriaEdit = (props) => {
     }
 
     await axios
-      .put(global.url_categoria + id, formData, options)
+      .put(Url.url_categoria + id, formData, options)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         history.push("/categorias");
       })
       .catch((error) => {
@@ -89,6 +92,8 @@ const CategoriaEdit = (props) => {
     setImage(e.target.files[0]);
     setImageUrl(URL.createObjectURL(e.target.files[0]));
     setCategoria({ ...categoria }, "imagen", image);
+    document.getElementById("edit_com").hidden = true;
+    document.getElementById("edit2_com").hidden = false;
   };
 
   return (
@@ -102,7 +107,7 @@ const CategoriaEdit = (props) => {
             <form id="comiAdd" onSubmit={(e) => onSubmit(e)}>
               <Row>
                 <Col className="py-1" xs xl="7">
-                  <FormGroup class="groupf mb-3">
+                  <FormGroup className="groupf mb-3">
                     <label>Nombre:</label>
                     <input
                       required
@@ -115,41 +120,51 @@ const CategoriaEdit = (props) => {
                     />
                   </FormGroup>
                   <div id="img-add">
-                    {/* <img id="addimg" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-camera-512.png" /> */}
                     <img
                       id="addimg"
-                      src={global.url_static + categoria.imagen}
+                      src={Url.url_static + categoria.imagen}
                       alt=""
                     />
                   </div>
-                  <FormGroup class="groupf mb-3">
-                    <div class="mt-3">
+                  <FormGroup className="groupf mb-3">
+                    <div className="mt-3">
                       <label>Link-img:</label>
                       <input
                         required
                         name="imagen"
                         type="file"
                         accept="image/*"
-                        // value={imagen}
                         onChange={(e) => selectFile(e)}
                       />
                     </div>
                   </FormGroup>
-                  <div id="img-add">
-                    <img id="addimg" src={imageUrl} alt="" />
+                  <div>
+                    <img
+                      id="edit_com"
+                      className="img-add-2"
+                      src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-camera-512.png"
+                      alt=""
+                    />
+                    <img
+                      id="edit2_com"
+                      className="img-add-2"
+                      src={imageUrl}
+                      alt=""
+                      hidden
+                    />
                   </div>
                 </Col>
               </Row>
-              <footer id="addfoot">
-                <button className="btn btn-success addbuts">Actualizar</button>
-                <button
-                  onClick={() => history.goBack()}
-                  class="btn btn-danger addbuts"
-                >
-                  Cancelar
-                </button>
-              </footer>
+              <button className="btn btn-success addbuts">Actualizar</button>
             </form>
+            <footer id="addfoot">
+              <button
+                onClick={() => history.goBack()}
+                className="btn btn-danger addbuts"
+              >
+                Cancelar
+              </button>
+            </footer>
           </Container>
         </Container>
       </div>

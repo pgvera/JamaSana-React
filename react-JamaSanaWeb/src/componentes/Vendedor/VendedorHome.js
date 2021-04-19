@@ -20,6 +20,9 @@ import NavBar from "../componentes_comunes/navbar";
 import LabelVendedor from "../componentes_comunes/label_administrador";
 import Separador from "../componentes_comunes/separador";
 
+//constantes
+import * as Url from "../../recursos/constantes/http-url";
+
 const cookies = new Cookies();
 
 const VendedorHome = (props) => {
@@ -49,18 +52,8 @@ const VendedorHome = (props) => {
       },
     };
 
-    // const result = await axios.get(global.url_vendedores, options).then(res => {
-    //   console.log(res)
-    // }).catch(error => {
-    //   console.log(error)
-    //   alert('No se puede obtener Vendedores  \n'+error.toString())
-    // });
-
-    const result = await axios.get(global.url_vendedores, options);
+    const result = await axios.get(Url.url_vendedores, options);
     setVendedor(result.data.reverse());
-
-    // const result = await axios.get(global.url_vendedores);
-    // setCategoria(result.data.reverse());
   };
 
   const deleteVendedores = async (id) => {
@@ -73,9 +66,9 @@ const VendedorHome = (props) => {
     };
 
     await axios
-      .delete(global.url_vendedor + id, options)
+      .delete(Url.url_vendedor + id, options)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -86,7 +79,7 @@ const VendedorHome = (props) => {
   };
 
   function format(cell, row) {
-    console.log(cell);
+    // console.log(cell);
     return (
       <div>
         <span>
@@ -95,12 +88,15 @@ const VendedorHome = (props) => {
           </Link>
         </span>
         <span>
-          <Link className="links-comida" onClick={() => deleteVendedores(cell)}>
+          <label
+            className="links-comida"
+            onClick={() => deleteVendedores(cell)}
+          >
             <Icon.DashCircleFill
               id="delete"
               className="iconos"
             ></Icon.DashCircleFill>
-          </Link>
+          </label>
         </span>
       </div>
     );
@@ -200,9 +196,6 @@ const VendedorHome = (props) => {
             {(props) => (
               <div>
                 <div className="row">
-                  {/* <div className="col-sm">
-                    <h3>Buscar:</h3>
-                    </div> */}
                   <div className="col-sm">
                     <SearchBar {...props.searchProps} />
                     <ClearSearchButton {...props.searchProps} />
@@ -220,7 +213,6 @@ const VendedorHome = (props) => {
 
                 <br></br>
                 <br></br>
-                {/* <BootstrapTable keyField='id' data={vendedores} columns={columns}  bordered={false} /> */}
                 <MyExportCSV {...props.csvProps} />
                 <BootstrapTable
                   bootstrap4

@@ -1,60 +1,57 @@
 .ul-style {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow: hidden;
-    background-color: rgba(79,208,83,.3);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(79, 208, 83, 0.3);
 }
 
 .li-style {
-    float: left;
-    font-size: 15px;
+  float: left;
+  font-size: 15px;
 }
 
 .li-style * {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 .li-style a:hover:not(.active) {
-    background-color: #77D353;
-    text-decoration: none;
-    color: black;
+  background-color: #77d353;
+  text-decoration: none;
+  color: black;
 }
 
-.active{
-
-    background-color: #77D353;
-
+.active {
+  background-color: #77d353;
 }
 
 /* centrado y color */
 .center-color {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #77D353;
-    border: 1px solid #77D353;
-    color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #77d353;
+  border: 1px solid #77d353;
+  color: white;
 }
 
-.name-app{
-    width: 150px;
-    height: 0px;
-    margin: 10px;
-    font-size: 13px;
-    border-radius: 20px;
+.name-app {
+  width: 150px;
+  height: 0px;
+  margin: 10px;
+  font-size: 13px;
+  border-radius: 20px;
 }
 
-.logout-btn{
-    width: 130px ;
-    height: 35px;
-    font-size: 15px;
-    margin: 5px;
-    border-radius: 10px;
+.logout-btn {
+  width: 130px;
+  height: 35px;
+  font-size: 15px;
+  margin: 5px;
+  border-radius: 10px;
 }
