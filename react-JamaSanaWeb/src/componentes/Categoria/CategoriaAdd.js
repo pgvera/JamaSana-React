@@ -4,10 +4,15 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { useHistory } from "react-router-dom";
 import { Container, Row, Col, FormGroup } from "reactstrap";
+import { FilePond, registerPlugin } from "react-filepond";
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 
 //css
 import "./Categoria.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "filepond/dist/filepond.min.css";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 //componentes
 import NavBar from "../componentes_comunes/navbar";
@@ -16,6 +21,8 @@ import Separador from "../componentes_comunes/separador";
 
 //constantes
 import * as Url from "../../recursos/constantes/http-url";
+
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 const cookies = new Cookies();
 
@@ -26,23 +33,12 @@ const CategoriaAdd = (props) => {
     nombre: "",
     imagen: null,
   });
+  const [files, setFiles] = useState([]);
 
-  const [image, setImage] = useState([]);
-  const [imageUrl, setImageUrl] = useState([]);
-
-  useEffect(() => {
-    setImageUrl(
-      "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-camera-512.png"
-    );
-  }, []);
+  useEffect(() => {}, []);
 
   const onInputChange = (e) => {
     setCategoria({ ...categoria, [e.target.name]: e.target.value });
-  };
-  const selectFile = (e) => {
-    setImage(e.target.files[0]);
-    setImageUrl(URL.createObjectURL(e.target.files[0]));
-    setCategoria({ ...categoria }, "imagen", image);
   };
 
   const onSubmit = async (e) => {
@@ -59,7 +55,7 @@ const CategoriaAdd = (props) => {
 
     let data = {
       nombre: categoria.nombre,
-      imagen: image,
+      imagen: files[0].file,
     };
 
     const formData = new FormData();
@@ -102,21 +98,14 @@ const CategoriaAdd = (props) => {
                       onChange={(e) => onInputChange(e)}
                     />
                   </FormGroup>
-                  <FormGroup className="groupf mb-3">
-                    <div className="mt-3">
-                      <label>Link-img:</label>
-                      <input
-                        required
-                        name="srcimg"
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => selectFile(e)}
-                      />
-                    </div>
-                  </FormGroup>
-                  <div id="img-add">
-                    <img id="addimg" src={imageUrl} alt="" />
-                  </div>
+                  <FilePond
+                    required
+                    files={files}
+                    onupdatefiles={setFiles}
+                    allowMultiple={false}
+                    name="files"
+                    labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+                  />
                 </Col>
               </Row>
               <button

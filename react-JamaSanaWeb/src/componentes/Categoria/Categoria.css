@@ -1,37 +1,48 @@
-.img_cat{
-    width: 5rem;
+#img-add > img {
+  width: 100%;
+}
+.img_cat {
+  width: 12rem;
+  margin: 0 auto;
+  height: 6rem;
+  padding-right: 1rem;
+}
+
+.table_cat {
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-bottom: 5%;
+}
+
+#edit {
+  fill: #fff;
+  background-color: #19cc95;
+  border-radius: 85%;
+  width: 2.1rem;
+  height: 2rem;
+  padding: 0.3rem;
+}
+
+#delete {
+  background-color: #fff;
+  fill: #d7576a;
+  border-radius: 85%;
+  width: 2.1rem;
+  height: 2rem;
+}
+
+.links-comida {
+  margin: auto 5%;
+}
+
+@media (max-width: 860px) {
+  .img_cat {
+    width: 8rem;
     margin: 0 auto;
-    height: 5rem; 
+    height: 5rem;
+    padding-right: 1rem;
+  }
 }
-
-.table_cat{
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-bottom: 5%;
-}
-
-#edit{
-    fill: #fff;
-    background-color: #19CC95;
-    border-radius: 85%;
-    width: 2.1rem;
-    height: 2rem;
-    padding: 0.3rem;
-  }
-  
-  #delete{
-    background-color: #fff;
-    fill: #D7576A;
-    border-radius: 85%;
-    width: 2.1rem;
-    height: 2rem;
-  
-  }
-
-  .links-comida{
-    margin: auto 5%;
-    
-  }
 
 /* no es mio */
 /* .tdim{

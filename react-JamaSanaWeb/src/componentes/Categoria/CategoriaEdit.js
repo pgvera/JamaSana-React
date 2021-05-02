@@ -4,10 +4,15 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { useHistory, useParams } from "react-router-dom";
 import { Container, Row, Col, FormGroup } from "reactstrap";
+import { FilePond, registerPlugin } from "react-filepond";
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 
 //css
 import "./Categoria.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "filepond/dist/filepond.min.css";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 //componentes
 import NavBar from "../componentes_comunes/navbar";
@@ -17,20 +22,15 @@ import Separador from "../componentes_comunes/separador";
 //constantes
 import * as Url from "../../recursos/constantes/http-url";
 
+// Register the plugins
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+
 const cookies = new Cookies();
 const CategoriaEdit = (props) => {
   let history = useHistory();
   const { id } = useParams();
-
-  const [image, setImage] = useState([]);
-  const [imageUrl, setImageUrl] = useState([]);
-
-  // const [categoria, setCategoria] = useState([]);
-  const [categoria, setCategoria] = useState({
-    nombre: "",
-    imagen: "",
-  });
-
+  const [files, setFiles] = useState([]);
+  const [categoria, setCategoria] = useState({});
   const { nombre } = categoria;
 
   useEffect(() => {
@@ -39,6 +39,10 @@ const CategoriaEdit = (props) => {
 
   const onInputChange = (e) => {
     setCategoria({ ...categoria, [e.target.name]: e.target.value });
+  };
+
+  const changeImage = () => {
+    document.getElementById("img-add").hidden = true;
   };
 
   const loadCategoria = async () => {
@@ -57,7 +61,6 @@ const CategoriaEdit = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     let token = cookies.get("token");
-
     const options = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -65,14 +68,23 @@ const CategoriaEdit = (props) => {
       },
     };
 
-    let data = {
-      nombre: categoria.nombre,
-      imagen: image,
-    };
-
+    let data = {};
+    if (files.length > 0) {
+      data = {
+        nombre: categoria.nombre,
+        imagen: files[0].file,
+      };
+      console.log("entre aqui");
+    } else {
+      data = {
+        nombre: categoria.nombre,
+      };
+      console.log("no");
+    }
     const formData = new FormData();
 
     for (let key in data) {
+      console.log(data[key]);
       formData.append(key, data[key]);
     }
 
@@ -86,14 +98,6 @@ const CategoriaEdit = (props) => {
         console.log(error);
         alert(error.toString());
       });
-  };
-
-  const selectFile = (e) => {
-    setImage(e.target.files[0]);
-    setImageUrl(URL.createObjectURL(e.target.files[0]));
-    setCategoria({ ...categoria }, "imagen", image);
-    document.getElementById("edit_com").hidden = true;
-    document.getElementById("edit2_com").hidden = false;
   };
 
   return (
@@ -126,7 +130,18 @@ const CategoriaEdit = (props) => {
                       alt=""
                     />
                   </div>
-                  <FormGroup className="groupf mb-3">
+                  <FilePond
+                    files={files}
+                    onupdatefiles={setFiles}
+                    allowMultiple={false}
+                    // maxFiles={3}
+                    // server="/api"
+                    name="files"
+                    // onupdatefiles={setFiles}
+                    labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+                    onaddfile={(e) => changeImage()}
+                  />
+                  {/* <FormGroup className="groupf mb-3">
                     <div className="mt-3">
                       <label>Link-img:</label>
                       <input
@@ -137,8 +152,8 @@ const CategoriaEdit = (props) => {
                         onChange={(e) => selectFile(e)}
                       />
                     </div>
-                  </FormGroup>
-                  <div>
+                  </FormGroup> */}
+                  {/* <div>
                     <img
                       id="edit_com"
                       className="img-add-2"
@@ -152,7 +167,7 @@ const CategoriaEdit = (props) => {
                       alt=""
                       hidden
                     />
-                  </div>
+                  </div> */}
                 </Col>
               </Row>
               <button className="btn btn-success addbuts">Actualizar</button>

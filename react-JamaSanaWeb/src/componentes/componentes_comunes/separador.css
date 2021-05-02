@@ -2,18 +2,29 @@
 .separador {
   width: 100%;
   display: grid;
-  grid-template-columns: 5% 10% 85%;
+  grid-template-columns: 5% 15% 85%;
   text-align: center;
   align-items: center;
 }
 
 .separador > s {
-  height: 2px;
+  height: 1px;
   background: #77d353;
   display: inline-block;
+  width: 100%;
 }
 
 .fuente-color {
   font-size: 25px;
   color: #77d353;
+}
+
+@media (max-width: 860px) {
+  .separador {
+    width: 100%;
+    display: grid;
+    /* grid-template-columns: 5% 30% 85%; */
+    text-align: center;
+    align-items: center;
+  }
 }

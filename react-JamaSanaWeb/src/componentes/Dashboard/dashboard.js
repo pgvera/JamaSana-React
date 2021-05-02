@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Separador from "../componentes_comunes/separador";
+// import Navbar from "../componentes_comunes/navbar";
 import Navbar from "../componentes_comunes/navbar";
 import Label from "../componentes_comunes/label_administrador";
 import Cookies from "universal-cookie";
@@ -9,6 +10,7 @@ import { Redirect } from "react-router";
 //css
 import "./dashboard.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../componentes_comunes/navbar.css";
 
 //imagenes
 // import logo from "../../imagenes/logo.png"
@@ -59,7 +61,8 @@ class Dashboard extends Component {
       console.log(cookies.get("token"));
       return (
         <div>
-          <Navbar {...this.props} />
+          {/* <Navbar {...this.props} /> */}
+          <Navbar></Navbar>
           <Label />
           <Separador nombre="Reportes" />
           <div className="centrado-graficos">
