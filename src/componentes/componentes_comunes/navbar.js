@@ -72,7 +72,7 @@ class Navbar2 extends Component {
                 isAuth: true,
                 onClick: () => {
                   // What you want to do...
-                  alert("I need another cup of coffee...");
+                  window.location.href = "/suscripciones";
                 },
               },
               // {

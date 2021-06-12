@@ -14,7 +14,9 @@ import CategoriaEdit from './componentes/Categoria/CategoriaEdit';
 import VendedorHome from './componentes/Vendedor/VendedorHome';
 import VendedorAdd from './componentes/Vendedor/VendedorAdd';
 import VendedorEdit from './componentes/Vendedor/VendedorEdit';
-
+import SuscripcionHome from './componentes/Suscripciones/SuscripcionHome';
+import SuscripcionAdd from './componentes/Suscripciones/SuscripcionAdd';
+import SuscripcionEdit from './componentes/Suscripciones/SuscripcionEdit';
 
 function App() {
   return (
@@ -28,6 +30,10 @@ function App() {
         <Route exact path="/vendedores" render={props => (<VendedorHome {...props} />)} />
         <Route exact path="/vendedor/add" render={props => (<VendedorAdd {...props} />)} />
         <Route exact path="/vendedor/edit/:id" render={props => (<VendedorEdit {...props} />)} />
+        <Route exact path="/suscripciones" render={props => (<SuscripcionHome {...props} />)} />
+        <Route exact path="/suscripcion/add" render={props => (<SuscripcionAdd {...props} />)} />
+        <Route exact path="/suscripcion/edit/:id" render={props => (<SuscripcionEdit {...props} />)} />
+
       </Switch>
     </Router>
   );

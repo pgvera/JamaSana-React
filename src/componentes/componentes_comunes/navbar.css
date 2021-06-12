@@ -85,7 +85,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   #_2iAdU ._2trtS > ul {
     display: flex;
     flex-direction: row;
@@ -96,10 +96,10 @@
     /* margin-right: -4rem; */
   }
   #_2iAdU {
-    padding: 1rem 0;
-    justify-content: start;
+    width: -moz-fit-content;
     width: fit-content;
-  }
+    margin-left: -1rem;
+}
   #_2iAdU > div {
     /* padding: 0.5rem; */
     padding: -1rem;

@@ -28,3 +28,15 @@
     align-items: center;
   }
 }
+
+@media (max-width: 430px) {
+  .separador {
+    display: grid;
+    grid-template-columns: 5% 60% 85%;
+    text-align: center;
+    align-items: center;
+    width: 65%;
+}
+}
+
+

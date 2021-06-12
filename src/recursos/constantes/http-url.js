@@ -10,6 +10,9 @@ export const url_usuarios = "usuarios/";
 // productos
 export const url_productos = "productos/";
 
+// paquetes
+export const url_paquetes = "paquetes/";
+
 //login
 export const url_login = url_server + url_usuarios + "login_admin";
 
@@ -22,3 +25,11 @@ export const url_vendedores = url_server + url_usuarios + "allvendedor";
 export const url_vendedor = url_server + url_usuarios + "vendedor/";
 export const url_registrar_vendedor =
   url_server + url_usuarios + "registrar_vendedor";
+
+  // suscripciones
+  export const url_suscripciones = url_server + url_paquetes + "allsuscripcion";
+export const url_suscripcion = url_server + url_paquetes + "suscripcion/";
+
+  // tipo suscripciones
+  export const url_tipoSuscripciones = url_server + url_paquetes + "alltiposuscripciones";
+export const url_tipoSuscripcion = url_server + url_paquetes + "tiposuscripcion/";
